@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flatiron CRM</title>
+</head>
+<body>
+  <h1>Flatiron CRM</h1>
+  <nav>
+    <ul>
+      <% if !logged_in? %>
+        <li><a href="/signup">Sign Up</a></li>
+        <li><a href="/login">Login</a></li>
+      <% else %>
+        <li><a href="/producers/<%=current_user.id%>">My Dashboard</a></li>
+        <li><a href="/producers">Team</a></li>
+        <li><a href="/producers/<%=current_user.id%>/edit">Update Information</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% end %>
+
+    </ul>
+  </nav>
+  <%= yield %>
+</body>
+</html>

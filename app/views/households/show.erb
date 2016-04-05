@@ -1,0 +1,12 @@
+<h1><%= @household.name %></h1>
+<a href="/households/<%= @household.id%>/edit">Edit Household</a>
+
+<h2>Address: <%=@household.address%></h2>
+<h3>Revenue: $<%=@household.revenue%></h3>
+
+<h2>Contacts</h2>
+<% @household.contacts.each do |contact| %>
+  <h3><%= contact.first_name %> <%= contact.last_name %></h3>
+<% end %>
+
+<br><br>

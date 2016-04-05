@@ -1,0 +1,19 @@
+<h1>Create new household</h1>
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+<form action="/households" method="POST">
+  <p>
+    <label for="name">Household Name: </label>
+    <input type="text" name="household[name]" id="name">
+  </p>
+  <p>
+    <label for="address">Household Address: </label>
+    <input type="text" name="household[address]" id="address">
+  </p>
+  <p>
+    <label for="revenue">Household Revenue: </label>
+    <input type="text" name="household[revenue]" id="revenue">
+  </p>
+  <input type="submit" value="Create Household">
+</form>

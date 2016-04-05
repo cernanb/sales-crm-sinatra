@@ -1,0 +1,15 @@
+<h2>Enter your login information</h2>
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+<form action="/login" method="post">
+  <p>
+    <label for="email">Email: </label>
+    <input type="text" name="producer[email]">
+  </p>
+  <p>
+    <label for="password">Password: </label>
+    <input type="password" name="producer[password]">
+  </p>
+  <input type="submit" value="Login">
+</form>

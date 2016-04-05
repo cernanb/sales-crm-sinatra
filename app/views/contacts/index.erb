@@ -1,0 +1,4 @@
+<h1>My Contacts</h1>
+<% current_user.contacts.each do |contact| %>
+  <%=contact.first_name%> <%=contact.last_name%>
+<% end %>

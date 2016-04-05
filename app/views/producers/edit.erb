@@ -1,0 +1,17 @@
+<h2>Update Your Information</h2>
+<form action="/producers/<%=@producer.id%>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <p>
+    <label for="email">New Email: </label>
+    <input type="text" name="producer[email]" value="<%=@producer.email%>">
+  </p>
+  <p>
+    <label for="city">City: </label>
+    <input type="text" name="producer[city]" value="<%=@producer.city%>">
+  </p>
+  <p>
+    <label for="password">Password: </label>
+    <input type="password" name="producer[password]">
+  </p>
+  <input type="submit" value="Update">
+</form>

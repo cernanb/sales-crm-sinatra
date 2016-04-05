@@ -1,0 +1,28 @@
+<h1>Create New Contact</h1>
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+<form action="/contacts" method="post">
+  <p>
+    <label for="first_name">First Name: </label>
+    <input type="text" name="contact[first_name]">
+  </p>
+  <p>
+    <label for="last_name">Last Name: </label>
+    <input type="text" name="contact[last_name]">
+  </p>
+  <p>
+    <label for="email">Email: </label>
+    <input type="text" name="contact[email]">
+  </p>
+  <p>
+    <label for="phone_number">Phone Number: </label>
+    <input type="text" name="contact[phone_number]">
+  </p>
+  <p>Choose the household to add the contact to (choose one).</p>
+  <% current_user.households.each do |household| %>
+    <input type="checkbox" name="contact[household_id]" value="<%=household.id%>"><%=household.name%></input>
+  <% end %>
+  <br><br>
+  <input type="submit" value="Create Contact">
+</form>

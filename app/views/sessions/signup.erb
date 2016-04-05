@@ -1,0 +1,23 @@
+<h2>Register below</h2>
+<% unless locals.empty? %>
+  <%= message %>
+<% end %>
+<form action="/signup" method="post">
+  <p>
+    <label for="name">Name: </label>
+    <input type="text" name="producer[name]" id="name">
+  </p>
+  <p>
+    <label for="email">Email: </label>
+    <input type="text" name="producer[email]">
+  </p>
+  <p>
+    <label for="city">City: </label>
+    <input type="text" name="producer[city]">
+  </p>
+  <p>
+    <label for="password">Password: </label>
+    <input type="password" name="producer[password]">
+  </p>
+  <input type="submit" value="Create Account">
+</form>
