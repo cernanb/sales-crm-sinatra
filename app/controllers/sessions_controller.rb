@@ -4,13 +4,13 @@ class SessionsController < ApplicationController
     erb  :"sessions/signup"
   end
 
-  get '/logout' do
-    session.clear
-    redirect '/'
-  end
-
   get '/login' do
     erb :"sessions/login"
+  end
+
+  get '/logout' do
+    logout!
+    redirect '/'
   end
 
   post '/signup' do
@@ -29,13 +29,8 @@ class SessionsController < ApplicationController
   end
 
   post '/login' do
-    @producer = Producer.find_by(email: params[:producer][:email])
-    if @producer && @producer.authenticate(params[:producer][:password])
-      session[:user_id] = @producer.id
-      redirect "/producers/#{@producer.id}"
-    else
-      erb :"/sessions/login", locals: {message: "Email or password is incorrect."}
-    end
+    login(params[:producer][:email], params[:producer][:password])
+    redirect "/producers/#{@producer.id}"
   end
 
 end

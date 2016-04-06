@@ -1,0 +1,12 @@
+<a href="/households/<%=@contact.household_id%>"><%= @contact.household.name%></a>
+<h1><%= @contact.first_name %> <%= @contact.last_name %></h1>
+<h2><%= @contact.email %></h2>
+<h2><%= @contact.phone_number %></h2>
+<br>
+<a href="/contacts/<%=@contact.id%>/edit">Edit Contact</a>
+<br><br>
+
+<form action="/contacts/<%=@contact.id%>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Contact">
+</form>

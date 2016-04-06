@@ -16,11 +16,25 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def logged_in?
-      !!session[:user_id]
+      !!current_user
     end
 
     def current_user
-      Producer.find_by_id(session[:user_id])
+      @current_user ||= Producer.find_by_id(session[:user_id])
+    end
+
+    def logout!
+      session.clear
+      redirect '/'
+    end
+
+    def login(email, password)
+      @producer = Producer.find_by(email: email)
+      if @producer && @producer.authenticate(password)
+        session[:user_id] = @producer.id
+      else
+        erb :"/sessions/login", locals: {message: "Email or password is incorrect."}
+      end
     end
   end
 

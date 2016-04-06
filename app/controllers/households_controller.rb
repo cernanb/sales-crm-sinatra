@@ -1,21 +1,37 @@
 class HouseholdsController < ApplicationController
 
   get '/households/new' do
-    erb :"households/new"
+    if logged_in?
+      erb :"households/new"
+    else
+      redirect '/login'
+    end
   end
 
   get '/households/:id' do
-    @household = Household.find_by_id(params[:id])
-    if current_user.id == @household.producer_id
-      erb :"households/show"
+    if logged_in?
+      @household = Household.find_by_id(params[:id])
+      if current_user.id == @household.producer_id
+        erb :"households/show"
+      else
+        redirect "/producers/#{current_user.id}"
+      end
     else
-      redirect "/producers/#{current_user.id}"
+      redirect '/login'
     end
   end
 
   get '/households/:id/edit' do
-    @household = Household.find_by_id(params[:id])
-    erb :"households/edit"
+    if logged_in?
+      @household = Household.find_by_id(params[:id])
+      if @household.producer_id == current_user.id
+        erb :"households/edit"
+      else
+        redirect "producers/#{current_user.id}"
+      end
+    else
+      redirect '/login'
+    end
   end
 
   post '/households' do
@@ -32,6 +48,15 @@ class HouseholdsController < ApplicationController
     @household = Household.find_by_id(params[:id])
     @household.update(params[:household])
     redirect "/households/#{@household.id}"
+  end
+
+  delete '/households/:id/delete' do
+    @household = Household.find_by_id(params[:id])
+    @household.contacts.each do |contact|
+      contact.delete
+    end
+    @household.delete
+    redirect "/producers/#{current_user.id}"
   end
 
 end

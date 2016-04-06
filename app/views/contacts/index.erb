@@ -1,4 +1,4 @@
 <h1>My Contacts</h1>
 <% current_user.contacts.each do |contact| %>
-  <%=contact.first_name%> <%=contact.last_name%>
+  <p><a href=""><%=contact.first_name%> <%=contact.last_name%></a> - <a href="/households/<%=contact.household.id%>"><%=contact.household.name%></a></p>
 <% end %>

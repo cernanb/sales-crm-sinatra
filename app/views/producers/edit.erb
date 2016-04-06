@@ -15,3 +15,7 @@
   </p>
   <input type="submit" value="Update">
 </form>
+<form action="/producers/<%=@producer.id%>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Account">
+</form>

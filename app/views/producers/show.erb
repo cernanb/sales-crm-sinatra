@@ -1,6 +1,7 @@
-<h1><%= @producer.name %>'s Dashboard</h1>
+<h1><%= current_user.name %>'s Dashboard</h1>
+<a href="/contacts">My Contacts</a>
 <h3>Relationship Households</h3>
-<% @producer.households.each do |household| %>
+<% current_user.households.each do |household| %>
   <p><a href="/households/<%=household.id %>"><%= household.name %> - $<%= household.revenue %></a></p>
 <% end %>
 <br><br>
