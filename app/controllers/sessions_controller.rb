@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
 
   post '/signup' do
     @producer = Producer.new(params[:producer])
-    # binding.pry
     if params[:producer][:name].empty? || params[:producer][:email].empty? || params[:producer][:city].empty? || params[:producer][:password].empty?
       erb :"sessions/signup", locals: {message: "Cannot have empty fields."}
     else
