@@ -28,8 +28,17 @@ class SessionsController < ApplicationController
   end
 
   post '/login' do
-    login(params[:producer][:email], params[:producer][:password])
-    redirect "/producers/#{@producer.id}"
+    if params[:producer][:email].empty? || params[:producer][:password].empty?
+      erb :"sessions/login", locals: {message: "Cannot have empty fields."}
+    else
+      login(params[:producer][:email], params[:producer][:password])
+      if logged_in?
+        redirect "/producers/#{@producer.id}"
+      else
+        erb :"sessions/login", locals: {message: "Email or password is incorrect."}
+      end
+    end
+
   end
 
 end

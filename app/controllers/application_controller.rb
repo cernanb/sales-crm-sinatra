@@ -32,8 +32,6 @@ class ApplicationController < Sinatra::Base
       @producer = Producer.find_by(email: email)
       if @producer && @producer.authenticate(password)
         session[:user_id] = @producer.id
-      else
-        erb :"/sessions/login", locals: {message: "Email or password is incorrect."}
       end
     end
   end

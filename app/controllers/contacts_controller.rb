@@ -43,7 +43,7 @@ class ContactsController < ApplicationController
   end
 
   post '/contacts' do
-    if params[:contact][:first_name].empty? || params[:contact][:last_name].empty? || params[:contact][:email].empty? || params[:contact][:phone_number].empty?
+    if valid_fields?(params)
       erb :"/contacts/new", locals: {message: "Cannot have empty fields."}
     else
       @contact = Contact.new(params[:contact])
