@@ -15,6 +15,10 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    def valid_fields?(params)
+      params[:contact][:first_name].empty? || params[:contact][:last_name].empty? || params[:contact][:email].empty? || params[:contact][:phone_number].empty?
+    end
+
     def logged_in?
       !!current_user
     end
