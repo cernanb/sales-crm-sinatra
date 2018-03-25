@@ -3,23 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Flatiron CRM</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-  <h1>Flatiron CRM</h1>
-  <nav>
-    <ul>
-      <% if !logged_in? %>
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="/login">Login</a></li>
-      <% else %>
-        <li><a href="/producers/<%=current_user.id%>">My Dashboard</a></li>
-        <li><a href="/producers">Team</a></li>
-        <li><a href="/producers/<%=current_user.id%>/edit">Update Information/Delete Account</a></li>
-        <li><a href="/logout">Logout</a></li>
-      <% end %>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Sales CRM</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     <% if !logged_in? %>
+      <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
+      <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+    <% else %>
+      <li class="nav-item"><a class="nav-link" href="/producers/<%=current_user.id%>">My Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/producers">Team</a></li>
+      <li class="nav-item"><a class="nav-link" href="/producers/<%=current_user.id%>/edit">Update Information/Delete Account</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    <% end %>
+      
     </ul>
-  </nav>
-  <%= yield %>
+    
+  </div>
+</nav>
+   
+    
+
+      <ul>
+       
+
+      </ul>
+    </nav>
+    <%= yield %>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
